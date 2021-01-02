@@ -6,7 +6,7 @@
 using namespace std;
 class Infixstack{
     stack<string> s;
-    float counter,counter2;
+    //float counter,counter2;
     static string InfixEval(string va1,string va2,string o){
         float v1 ,v2;
         v1=stof(va1);
@@ -34,10 +34,11 @@ class Infixstack{
         }
         return false;
     }
-    bool PostCond(string a){
+    bool PreCond(string a){
         if(isOperator(a)){
             return false;
-        }else if(!isOperator(s.top())){
+        }
+        if((s.size()>0)&&(!isOperator(s.top()))){
             return true;
         }
         return false;
@@ -61,9 +62,9 @@ class Infixstack{
     void Ipush(string a){
         cout<<a<<"\n";
         string s1="",s2="",s3="";
-        if(!PostCond(a)){
+        if(!PreCond(a)){
             s.push(a);
-        }else if(s.size()>1){
+        }else{
             s1=a;
             s2=s.top();
             s.pop();
@@ -87,8 +88,6 @@ class Infixstack{
     //     return stof(Pusher(s));
     // }
     float Prevaluate(string s){
-        counter=0;
-        counter2=0;
         Eval=&PreEval;
         return stof(Pusher(s));
     }

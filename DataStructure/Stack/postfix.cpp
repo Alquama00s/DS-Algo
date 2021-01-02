@@ -5,40 +5,39 @@
 #include<functional>
 using namespace std;
 class Infixstack{
-    stack<string> s;
-    float counter;
-    static string InfixEval(string va1,string va2,string o){
-        float v1 ,v2;
-        v1=stof(va1);
-        v2=stof(va2);
-        if(o=="*"){
-            v1=v2*v1;
-        }else if(o=="/"){
-            v1=v2/v1;
-        }else if(o=="-"){
-            v1=v2-v1;
-        }else{
-            v1=v2+v1;
+    static stack<string> s;
+    static bool isOperator(string s){
+        if(s=="*"||s=="/"||s=="+"||s=="-"){
+            return true;
         }
-       return (to_string(v1));
+        return false;
     }
-    static string PostFix(string va1,string va2,string o){
-        return (va2+" "+va1+" "+o);
+    static bool PostCond(string a){
+        return isOperator(a);
     }
-    static string PreFix(string va1,string va2,string o){
-        return (o+" "+va2+" "+va1);
-    }
-    bool PostCond(string a){
-        float num;
-        try
-        {
-            num=stof(a);
+    static bool PreCond(string a){
+        if(isOperator(a)){
             return false;
         }
-        catch(const std::exception& e)
-        {
-           return true;
+        if((s.size()>0)&&(!isOperator(s.top()))){
+            return true;
         }
+        return false;
+    }
+    static string PreEval(string va1,string va2,string va3){
+        float v1 ,v2;
+        v1=stof(va2);
+        v2=stof(va1);
+        if(va3=="*"){
+            v1=v1*v2;
+        }else if(va3=="/"){
+            v1=v1/v2;
+        }else if(va3=="-"){
+            v1=v1-v2;
+        }else{
+            v1=v1+v2;
+        }
+       return (to_string(v1));
     }
     static string PostEval(string va1,string va2,string va3){
         float v1 ,v2;
@@ -56,6 +55,7 @@ class Infixstack{
        return (to_string(v1));
     }
     string (*Eval)(string,string,string);
+    bool (*Cond)(string);
     void Ipush(string a){
         string s1="",s2="",s3="";
         if(!PostCond(a)){
@@ -67,7 +67,7 @@ class Infixstack{
             s3=s.top();
             s.pop();
             s1=(*Eval)(s1,s2,s3);
-            s.push(s1);
+            s.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                push(s1);
         }
     }
     string Pusher(string str){
