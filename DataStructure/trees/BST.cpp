@@ -185,27 +185,27 @@ class tree {
 int main() {
     tree t;
     node *pt;
-    int a[] = {5, 3, 4, 2, 1, 8, 6};
+    int a[] = {1,11,2,5,16,31};
     for (size_t i = 0; i < 7; i++) {
         t.insert(a[i]);
     }
     t.print();
-    pt=t.findMin(t.root->right);
-    cout<<pt->value<<" min \n";
-    pt=t.find(8,t.root,t.root);
-    cout<<pt->value<<" find operation\n";
-    t.print();
-    t.insert(9);
-    t.print();
-    t.preOrder(t.root);
-    cout<<"\n";
-    t.postOrder(t.root);
-    cout<<"\n";
+    // pt=t.findMin(t.root->right);
+    // cout<<pt->value<<" min \n";
+    // pt=t.find(8,t.root,t.root);
+    // cout<<pt->value<<" find operation\n";
+    // t.print();
+    // t.insert(9);
+    // t.print();
+    // t.preOrder(t.root);
+    // cout<<"\n";
+    // t.postOrder(t.root);
+    // cout<<"\n";
     t.inOrder(t.root);
     cout<<"\n";
-    t.levelOrder(t.root);
-    cout<<"\n";
-     t.remove(3,t.root);
-    t.print();
+    // t.levelOrder(t.root);
+    // cout<<"\n";
+    //  t.remove(3,t.root);
+    // t.print();
     return 0;
 }

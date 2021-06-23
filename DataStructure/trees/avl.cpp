@@ -189,7 +189,7 @@ class tree {
 int main() {
     tree t;
     node *pt;
-    int a[] = {5, 3, 4, 2, 1, 8, 6};
+    int a[] = {5, 7, 9, 1, 3, 10, 8, 4};
     for (size_t i = 0; i < 7; i++) {
         t.insert(a[i]);
     }
