@@ -8,5 +8,5 @@ This contains self implemented data structures from scratch,and various algorith
 
 ### Algorithms
 
-- [Maximum Subarray problem](./Algorithm/div-and-conq/max-sub-array.cpp) <- current foccus
+- [Maximum Subarray problem](./Algorithm/div-and-conq/max-sub-array.cpp)
 

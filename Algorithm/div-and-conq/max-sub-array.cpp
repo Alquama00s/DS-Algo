@@ -1,4 +1,3 @@
-//incomplete
 //maximum sub array problem
 
 #include <bits/stdc++.h>
@@ -6,9 +5,12 @@
 #include <iostream>
 using namespace std;
 vector<int> data;
-int* find_max_cross(int beg, int mid, int end) {
+vector<int> find_max_cross(int beg, int mid, int end) {
     int sum = 0, total_left = INT_MIN, total_right = INT_MIN, left_index,
         right_index;
+        /*cout<<beg<<" -beg\n";
+        cout<<mid<<" -mid\n";
+        cout<<end<<" -end\n";*/
     for (int i = mid; i >= beg; i--) {
         /* code */
         sum += data[i];
@@ -18,7 +20,7 @@ int* find_max_cross(int beg, int mid, int end) {
         }
     }
     sum = 0;
-    for (int i = mid; i < end; i++) {
+    for (int i = mid+1; i <= end; i++) {
         /* code */
         sum += data[i];
         if (sum > total_right) {
@@ -26,18 +28,19 @@ int* find_max_cross(int beg, int mid, int end) {
             right_index = i;
         }
     }
-    int ans[3] = {right_index, left_index, total_right + total_left};
+    vector<int> ans = {left_index, right_index, total_right + total_left};
     return ans;
 }
-int* find_max(int beg, int end) {
+vector<int> find_max(int beg, int end) {
+    vector<int> rt,lt,crs;
     if (beg == end) {
-        int ans[3] = {beg, end, data[beg]};
-        return ans;
+        lt={beg, end, data[beg]};
+        return lt;
     }
     int mid = (beg + end) / 2;
-    int* rt = find_max(beg, mid);
-    int* lt = find_max(mid+1, end);
-    int* crs = find_max_cross(beg, mid, end);
+    rt = find_max(beg, mid);
+    lt = find_max(mid+1, end);
+    crs = find_max_cross(beg, mid, end);
     if (crs[2] > lt[2] && crs[2] > rt[2]) {
         return crs;
     } else if (lt[2] > rt[2] && lt[2] > crs[2]) {
@@ -54,7 +57,7 @@ int main() {
         cin >> temp;
         data.push_back(temp);
     }
-    int* ans=find_max(0,n-1);
+    vector<int> ans=find_max(0,n-1);
     cout<<ans[0]<<" "<<ans[1]<<" "<<ans[2]<<"\n";
     /*for (int i = ans[0]; i <=ans[2]; i++)
     {
