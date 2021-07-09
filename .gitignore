@@ -1,2 +1,6 @@
 *.vscode*
 *a.out*
+*in.txt*
+*out.txt*
+*a.exe*
+*test.cpp
