@@ -40,6 +40,7 @@ codes marked with incomplete are work under progress.
 - [Infix to prefix Conversion](./Algorithm/stack-based/infix2prefix.cpp)
 - [Infix to postfix Conversion](./Algorithm/stack-based/infix2postfix.cpp)
 - [Matrix multiplication](./Algorithm/matrix-multiplication/multiplication.cpp)
+- [Modular Exponentiation](./Algorithm/modular-exponentiation/modular-exp.cpp)
 ## License
 
 This repository is released under the [MIT license](https://opensource.org/licenses/MIT).
